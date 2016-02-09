@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3fa5ff">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_logo_sign_in_activity"
+        android:src="@drawable/splash_logo"
+        />
+
+    <ImageButton
+        android:visibility="invisible"
+        android:layout_margin="10dp"
+        android:id="@+id/bt_linked_in_log_in_activity"
+        android:layout_width="215dp"
+        android:layout_height="41dp"
+        android:src="@drawable/linked_in_default_button"
+        android:contentDescription="LinkedIn Log In"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
