@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements NavDrawerActivity
             EpisodesFragment.TAG,
             DownloadsFragment.TAG,
             PlaybackHistoryFragment.TAG,
-            AddFeedFragment.TAG,
             DiscoverAuthors.TAG
     };
 
@@ -297,9 +296,6 @@ public class MainActivity extends AppCompatActivity implements NavDrawerActivity
                 break;
             case PlaybackHistoryFragment.TAG:
                 fragment = new PlaybackHistoryFragment();
-                break;
-            case AddFeedFragment.TAG:
-                fragment = new AddFeedFragment();
                 break;
             case DiscoverAuthors.TAG:
                 fragment = new DiscoverAuthors();

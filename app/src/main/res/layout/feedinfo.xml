@@ -24,7 +24,7 @@
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            tools:src="@drawable/ic_stat_antenna_default"
+            tools:src="@drawable/ic_launcher"
             tools:background="@android:color/holo_green_dark"/>
 
         <TextView

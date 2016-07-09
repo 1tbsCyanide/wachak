@@ -34,13 +34,13 @@
         custom:showAsAction="always">
     </item>
 
-    <item
-        android:id="@+id/visit_website_item"
-        android:icon="?attr/location_web_site"
-        custom:showAsAction="collapseActionView"
-        android:title="@string/visit_website_label"
-        android:visible="false">
-    </item>
+    <!--<item-->
+        <!--android:id="@+id/visit_website_item"-->
+        <!--android:icon="?attr/location_web_site"-->
+        <!--custom:showAsAction="collapseActionView"-->
+        <!--android:title="@string/visit_website_label"-->
+        <!--android:visible="false">-->
+    <!--</item>-->
     <item
         android:id="@+id/share_item"
         android:icon="?attr/social_share"

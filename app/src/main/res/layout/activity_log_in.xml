@@ -1,26 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#3fa5ff">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3fa5ff">
 
     <ImageView
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/iv_logo_sign_in_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/iv_logo_sign_in_activity"
-        android:src="@drawable/splash_logo"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/splash_logo" />
 
-    <ImageButton
-        android:visibility="invisible"
-        android:layout_margin="10dp"
-        android:id="@+id/bt_linked_in_log_in_activity"
-        android:layout_width="215dp"
-        android:layout_height="41dp"
-        android:src="@drawable/linked_in_default_button"
-        android:contentDescription="LinkedIn Log In"
+    <LinearLayout
+        android:id="@+id/ll_log_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/bt_linked_in_log_in_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#007bb5"
+            android:text="LinkedIn"
+            android:textColor="#fff" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/fb_login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/ib_facebook_splash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#3B5998"
+                android:text="Facebook"
+                android:textColor="#fff"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_log_in_log_in_activity"
+        android:layout_marginBottom="5dp"
+        android:layout_above="@id/ll_log_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:textColor="#fff"
+        android:gravity="center_horizontal"
+        />
 </RelativeLayout>

@@ -68,9 +68,9 @@ public class FeedItemMenuHandler {
         boolean hasMedia = selectedItem.getMedia() != null;
         boolean isPlaying = hasMedia && selectedItem.getState() == FeedItem.State.PLAYING;
 
-        if (!isPlaying) {
-            mi.setItemVisibility(R.id.skip_episode_item, false);
-        }
+//        if (!isPlaying) {
+//            mi.setItemVisibility(R.id.skip_episode_item, false);
+//        }
 
         boolean isInQueue = false;
         if(queueAccess != null) {
@@ -90,7 +90,7 @@ public class FeedItemMenuHandler {
         }
 
         if (!showExtendedMenu || selectedItem.getLink() == null) {
-            mi.setItemVisibility(R.id.visit_website_item, false);
+//            mi.setItemVisibility(R.id.visit_website_item, false);
             mi.setItemVisibility(R.id.share_link_item, false);
             mi.setItemVisibility(R.id.share_link_with_position_item, false);
         }
@@ -158,9 +158,9 @@ public class FeedItemMenuHandler {
     public static boolean onMenuItemClicked(Context context, int menuItemId,
                                             FeedItem selectedItem) throws DownloadRequestException {
         switch (menuItemId) {
-            case R.id.skip_episode_item:
-                context.sendBroadcast(new Intent(PlaybackService.ACTION_SKIP_CURRENT_EPISODE));
-                break;
+//            case R.id.skip_episode_item:
+//                context.sendBroadcast(new Intent(PlaybackService.ACTION_SKIP_CURRENT_EPISODE));
+//                break;
             case R.id.remove_item:
                 DBWriter.deleteFeedMediaOfItem(context, selectedItem.getMedia().getId());
                 break;
@@ -217,16 +217,16 @@ public class FeedItemMenuHandler {
                 selectedItem.setAutoDownload(false);
                 DBWriter.setFeedItemAutoDownload(selectedItem, false);
                 break;
-            case R.id.visit_website_item:
-                Uri uri = Uri.parse(selectedItem.getLink());
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                if(IntentUtils.isCallable(context, intent)) {
-                    context.startActivity(intent);
-                } else {
-                    Toast.makeText(context, context.getString(R.string.download_error_malformed_url),
-                            Toast.LENGTH_SHORT);
-                }
-                break;
+//            case R.id.visit_website_item:
+//                Uri uri = Uri.parse(selectedItem.getLink());
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                if(IntentUtils.isCallable(context, intent)) {
+//                    context.startActivity(intent);
+//                } else {
+//                    Toast.makeText(context, context.getString(R.string.download_error_malformed_url),
+//                            Toast.LENGTH_SHORT);
+//                }
+//                break;
             case R.id.support_item:
                 DBTasks.flattrItemIfLoggedIn(context, selectedItem);
                 break;

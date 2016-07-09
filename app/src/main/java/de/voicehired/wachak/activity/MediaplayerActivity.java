@@ -294,7 +294,7 @@ public abstract class MediaplayerActivity extends AppCompatActivity implements O
         );
 
         boolean hasWebsiteLink = media != null && media.getWebsiteLink() != null;
-        menu.findItem(R.id.visit_website_item).setVisible(hasWebsiteLink);
+//        menu.findItem(R.id.visit_website_item).setVisible(hasWebsiteLink);
 
         boolean isItemAndHasLink = media != null && (media instanceof FeedMedia) &&
                 ((FeedMedia) media).getItem() != null && ((FeedMedia) media).getItem().getLink() != null;
@@ -539,10 +539,10 @@ public abstract class MediaplayerActivity extends AppCompatActivity implements O
                             }
                         });
                         break;
-                    case R.id.visit_website_item:
-                        Uri uri = Uri.parse(media.getWebsiteLink());
-                        startActivity(new Intent(Intent.ACTION_VIEW, uri));
-                        break;
+//                    case R.id.visit_website_item:
+//                        Uri uri = Uri.parse(media.getWebsiteLink());
+//                        startActivity(new Intent(Intent.ACTION_VIEW, uri));
+//                        break;
                     case R.id.support_item:
                         if (media instanceof FeedMedia) {
                             DBTasks.flattrItemIfLoggedIn(this, ((FeedMedia) media).getItem());

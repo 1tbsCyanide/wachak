@@ -332,8 +332,8 @@ public class FeedInfoActivity extends ActionBarActivity {
         menu.findItem(R.id.support_item).setVisible(
                 feed != null && feed.getPaymentLink() != null);
         menu.findItem(R.id.share_link_item).setVisible(feed != null && feed.getLink() != null);
-        menu.findItem(R.id.visit_website_item).setVisible(feed != null && feed.getLink() != null &&
-                IntentUtils.isCallable(this, new Intent(Intent.ACTION_VIEW, Uri.parse(feed.getLink()))));
+//        menu.findItem(R.id.visit_website_item).setVisible(feed != null && feed.getLink() != null &&
+//                IntentUtils.isCallable(this, new Intent(Intent.ACTION_VIEW, Uri.parse(feed.getLink()))));
         return true;
     }
 

@@ -224,7 +224,7 @@ public class ItemlistFragment extends ListFragment {
             });
             if(feed == null || feed.getLink() == null) {
                 menu.findItem(R.id.share_link_item).setVisible(false);
-                menu.findItem(R.id.visit_website_item).setVisible(false);
+//                menu.findItem(R.id.visit_website_item).setVisible(false);
             }
             int[] attrs = { R.attr.action_bar_icon_color };
             TypedArray ta = getActivity().obtainStyledAttributes(UserPreferences.getTheme(), attrs);

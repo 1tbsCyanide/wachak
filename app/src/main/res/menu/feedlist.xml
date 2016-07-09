@@ -44,14 +44,14 @@
         custom:showAsAction="collapseActionView">
     </item>
 
-    <item
-        android:id="@+id/visit_website_item"
-        android:icon="?attr/location_web_site"
-        android:menuCategory="container"
-        custom:showAsAction="collapseActionView"
-        android:title="@string/visit_website_label"
-        android:visible="true">
-    </item>
+    <!--<item-->
+        <!--android:id="@+id/visit_website_item"-->
+        <!--android:icon="?attr/location_web_site"-->
+        <!--android:menuCategory="container"-->
+        <!--custom:showAsAction="collapseActionView"-->
+        <!--android:title="@string/visit_website_label"-->
+        <!--android:visible="true">-->
+    <!--</item>-->
     <item
         android:id="@+id/share_link_item"
         android:menuCategory="container"

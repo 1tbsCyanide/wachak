@@ -148,7 +148,6 @@
         <item>@string/episodes_label</item>
         <item>@string/downloads_label</item>
         <item>@string/playback_history_label</item>
-        <item>@string/add_feed_label</item>
         <item>@string/discover_authors</item>
     </string-array>
 
@@ -212,5 +211,5 @@
         <item>500</item>
     </string-array>
 
-    <string name="discover_authors">Discover Authors</string>
+    <string name="discover_authors">Search Wachak</string>
 </resources>

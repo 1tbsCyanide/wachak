@@ -40,7 +40,7 @@
             android:layout_alignRight="@id/txtvPlaceholder"
             android:layout_alignBottom="@id/txtvPlaceholder"
             android:contentDescription="@string/cover_label"
-            tools:src="@drawable/ic_stat_antenna_default"
+            tools:src="@drawable/ic_launcher"
             tools:background="@android:color/holo_green_dark" />
 
     </RelativeLayout>

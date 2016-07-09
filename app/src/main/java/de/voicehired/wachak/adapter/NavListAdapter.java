@@ -109,9 +109,6 @@ public class NavListAdapter extends BaseAdapter
             case PlaybackHistoryFragment.TAG:
                 icon = R.attr.ic_history;
                 break;
-            case AddFeedFragment.TAG:
-                icon = R.attr.content_new;
-                break;
             case DiscoverAuthors.TAG:
                 icon = R.attr.action_search;
                 break;

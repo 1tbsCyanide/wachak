@@ -49,15 +49,11 @@ import de.voicehired.wachak.activity.DirectoryChooserActivity;
 import de.voicehired.wachak.activity.MainActivity;
 import de.voicehired.wachak.activity.PreferenceActivity;
 import de.voicehired.wachak.activity.PreferenceActivityGingerbread;
-import de.voicehired.wachak.asynctask.OpmlExportWorker;
 import de.voicehired.wachak.core.preferences.GpodnetPreferences;
 import de.voicehired.wachak.core.preferences.UserPreferences;
 import de.voicehired.wachak.core.util.Converter;
 import de.voicehired.wachak.core.util.StorageUtils;
 import de.voicehired.wachak.core.util.flattr.FlattrUtils;
-import de.voicehired.wachak.dialog.AuthenticationDialog;
-import de.voicehired.wachak.dialog.AutoFlattrPreferenceDialog;
-import de.voicehired.wachak.dialog.GpodnetSetHostnameDialog;
 import de.voicehired.wachak.dialog.VariableSpeedDialog;
 
 /**
@@ -89,20 +85,20 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
 
     private static final String[] EXTERNAL_STORAGE_PERMISSIONS = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE };
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 41;
 
     public PreferenceController(PreferenceUI ui) {
         this.ui = ui;
         PreferenceManager.getDefaultSharedPreferences(ui.getActivity().getApplicationContext())
-            .registerOnSharedPreferenceChangeListener(this);
+                .registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(key.equals(UserPreferences.PREF_SONIC)) {
+        if (key.equals(UserPreferences.PREF_SONIC)) {
             CheckBoxPreference prefSonic = (CheckBoxPreference) ui.findPreference(UserPreferences.PREF_SONIC);
-            if(prefSonic != null) {
+            if (prefSonic != null) {
                 prefSonic.setChecked(sharedPreferences.getBoolean(UserPreferences.PREF_SONIC, false));
             }
         }
@@ -136,25 +132,25 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
                     }
             );
         }
-        ui.findPreference(PreferenceController.PREF_FLATTR_REVOKE).setOnPreferenceClickListener(
-                preference -> {
-                    FlattrUtils.revokeAccessToken(activity);
-                    checkItemVisibility();
-                    return true;
-                }
-        );
+//        ui.findPreference(PreferenceController.PREF_FLATTR_REVOKE).setOnPreferenceClickListener(
+//                preference -> {
+//                    FlattrUtils.revokeAccessToken(activity);
+//                    checkItemVisibility();
+//                    return true;
+//                }
+//        );
         ui.findPreference(PreferenceController.PREF_ABOUT).setOnPreferenceClickListener(
                 preference -> {
                     activity.startActivity(new Intent(activity, AboutActivity.class));
                     return true;
                 }
         );
-        ui.findPreference(PreferenceController.PREF_OPML_EXPORT).setOnPreferenceClickListener(
-                preference -> {
-                    new OpmlExportWorker(activity).executeAsync();
-                    return true;
-                }
-        );
+//        ui.findPreference(PreferenceController.PREF_OPML_EXPORT).setOnPreferenceClickListener(
+//                preference -> {
+//                    new OpmlExportWorker(activity).executeAsync();
+//                    return true;
+//                }
+//        );
         ui.findPreference(PreferenceController.PREF_CHOOSE_DATA_DIR).setOnPreferenceClickListener(
                 preference -> {
                     if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT &&
@@ -189,8 +185,8 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
                                 }
                                 return true;
                             }
-                }
-        );
+                        }
+                );
         ui.findPreference(UserPreferences.PREF_THEME)
                 .setOnPreferenceChangeListener(
                         (preference, newValue) -> {
@@ -295,51 +291,51 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
                     VariableSpeedDialog.showDialog(activity);
                     return true;
                 });
-        ui.findPreference(PreferenceController.PREF_GPODNET_SETLOGIN_INFORMATION)
-                .setOnPreferenceClickListener(preference -> {
-                    AuthenticationDialog dialog = new AuthenticationDialog(activity,
-                            R.string.pref_gpodnet_setlogin_information_title, false, false, GpodnetPreferences.getUsername(),
-                            null) {
-
-                        @Override
-                        protected void onConfirmed(String username, String password, boolean saveUsernamePassword) {
-                            GpodnetPreferences.setPassword(password);
-                        }
-                    };
-                    dialog.show();
-                    return true;
-                });
-        ui.findPreference(PreferenceController.PREF_GPODNET_LOGOUT).setOnPreferenceClickListener(
-                preference -> {
-                    GpodnetPreferences.logout();
-                    Toast toast = Toast.makeText(activity, R.string.pref_gpodnet_logout_toast, Toast.LENGTH_SHORT);
-                    toast.show();
-                    updateGpodnetPreferenceScreen();
-                    return true;
-                });
-        ui.findPreference(PreferenceController.PREF_GPODNET_HOSTNAME).setOnPreferenceClickListener(
-                preference -> {
-                    GpodnetSetHostnameDialog.createDialog(activity).setOnDismissListener(dialog -> updateGpodnetPreferenceScreen());
-                    return true;
-                });
-
-        ui.findPreference(PreferenceController.PREF_AUTO_FLATTR_PREFS)
-                .setOnPreferenceClickListener(preference -> {
-                    AutoFlattrPreferenceDialog.newAutoFlattrPreferenceDialog(activity,
-                            new AutoFlattrPreferenceDialog.AutoFlattrPreferenceDialogInterface() {
-                                @Override
-                                public void onCancelled() {
-
-                                }
-
-                                @Override
-                                public void onConfirmed(boolean autoFlattrEnabled, float autoFlattrValue) {
-                                    UserPreferences.setAutoFlattrSettings(autoFlattrEnabled, autoFlattrValue);
-                                    checkItemVisibility();
-                                }
-                            });
-                    return true;
-                });
+//        ui.findPreference(PreferenceController.PREF_GPODNET_SETLOGIN_INFORMATION)
+//                .setOnPreferenceClickListener(preference -> {
+//                    AuthenticationDialog dialog = new AuthenticationDialog(activity,
+//                            R.string.pref_gpodnet_setlogin_information_title, false, false, GpodnetPreferences.getUsername(),
+//                            null) {
+//
+//                        @Override
+//                        protected void onConfirmed(String username, String password, boolean saveUsernamePassword) {
+//                            GpodnetPreferences.setPassword(password);
+//                        }
+//                    };
+//                    dialog.show();
+//                    return true;
+//                });
+//        ui.findPreference(PreferenceController.PREF_GPODNET_LOGOUT).setOnPreferenceClickListener(
+//                preference -> {
+//                    GpodnetPreferences.logout();
+//                    Toast toast = Toast.makeText(activity, R.string.pref_gpodnet_logout_toast, Toast.LENGTH_SHORT);
+//                    toast.show();
+//                    updateGpodnetPreferenceScreen();
+//                    return true;
+//                });
+//        ui.findPreference(PreferenceController.PREF_GPODNET_HOSTNAME).setOnPreferenceClickListener(
+//                preference -> {
+//                    GpodnetSetHostnameDialog.createDialog(activity).setOnDismissListener(dialog -> updateGpodnetPreferenceScreen());
+//                    return true;
+//                });
+//
+//        ui.findPreference(PreferenceController.PREF_AUTO_FLATTR_PREFS)
+//                .setOnPreferenceClickListener(preference -> {
+//                    AutoFlattrPreferenceDialog.newAutoFlattrPreferenceDialog(activity,
+//                            new AutoFlattrPreferenceDialog.AutoFlattrPreferenceDialogInterface() {
+//                                @Override
+//                                public void onCancelled() {
+//
+//                                }
+//
+//                                @Override
+//                                public void onConfirmed(boolean autoFlattrEnabled, float autoFlattrValue) {
+//                                    UserPreferences.setAutoFlattrSettings(autoFlattrEnabled, autoFlattrValue);
+//                                    checkItemVisibility();
+//                                }
+//                            });
+//                    return true;
+//                });
         ui.findPreference(UserPreferences.PREF_IMAGE_CACHE_SIZE).setOnPreferenceChangeListener(
                 (preference, o) -> {
                     if (o instanceof String) {
@@ -380,7 +376,7 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
         setParallelDownloadsText(UserPreferences.getParallelDownloads());
         setEpisodeCacheSizeText(UserPreferences.getEpisodeCacheSize());
         setDataFolderText();
-        updateGpodnetPreferenceScreen();
+//        updateGpodnetPreferenceScreen();
     }
 
     @SuppressLint("NewApi")
@@ -390,22 +386,22 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
             String dir = data.getStringExtra(DirectoryChooserActivity.RESULT_SELECTED_DIR);
 
             File path;
-            if(dir != null) {
+            if (dir != null) {
                 path = new File(dir);
             } else {
                 path = ui.getActivity().getExternalFilesDir(null);
             }
             String message = null;
-            final Context context= ui.getActivity().getApplicationContext();
-            if(!path.exists()) {
+            final Context context = ui.getActivity().getApplicationContext();
+            if (!path.exists()) {
                 message = String.format(context.getString(R.string.folder_does_not_exist_error), dir);
-            } else if(!path.canRead()) {
+            } else if (!path.canRead()) {
                 message = String.format(context.getString(R.string.folder_not_readable_error), dir);
-            } else if(!path.canWrite()) {
+            } else if (!path.canWrite()) {
                 message = String.format(context.getString(R.string.folder_not_writable_error), dir);
             }
 
-            if(message == null) {
+            if (message == null) {
                 Log.d(TAG, "Setting data folder: " + dir);
                 UserPreferences.setDataFolder(dir);
                 setDataFolderText();
@@ -459,7 +455,7 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
             int v = Integer.parseInt(values[x]);
             if (v == UserPreferences.EPISODE_CLEANUP_QUEUE) {
                 entries[x] = res.getString(R.string.episode_cleanup_queue_removal);
-            } else if (v == UserPreferences.EPISODE_CLEANUP_NULL){
+            } else if (v == UserPreferences.EPISODE_CLEANUP_NULL) {
                 entries[x] = res.getString(R.string.episode_cleanup_never);
             } else if (v == 0) {
                 entries[x] = res.getString(R.string.episode_cleanup_after_listening);
@@ -477,11 +473,11 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
         String[] values = res.getStringArray(R.array.smart_mark_as_played_values);
         String[] entries = new String[values.length];
         for (int x = 0; x < values.length; x++) {
-            if(x == 0) {
+            if (x == 0) {
                 entries[x] = res.getString(R.string.pref_smart_mark_as_played_disabled);
             } else {
                 Integer v = Integer.parseInt(values[x]);
-                if(v < 60) {
+                if (v < 60) {
                     entries[x] = res.getQuantityString(R.plurals.time_seconds_quantified, v, v);
                 } else {
                     v /= 60;
@@ -503,10 +499,10 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
     @SuppressWarnings("deprecation")
     private void checkItemVisibility() {
         boolean hasFlattrToken = FlattrUtils.hasToken();
-        ui.findPreference(PreferenceController.PREF_FLATTR_SETTINGS).setEnabled(FlattrUtils.hasAPICredentials());
-        ui.findPreference(PreferenceController.PREF_FLATTR_AUTH).setEnabled(!hasFlattrToken);
-        ui.findPreference(PreferenceController.PREF_FLATTR_REVOKE).setEnabled(hasFlattrToken);
-        ui.findPreference(PreferenceController.PREF_AUTO_FLATTR_PREFS).setEnabled(hasFlattrToken);
+//        ui.findPreference(PreferenceController.PREF_FLATTR_SETTINGS).setEnabled(FlattrUtils.hasAPICredentials());
+//        ui.findPreference(PreferenceController.PREF_FLATTR_AUTH).setEnabled(!hasFlattrToken);
+//        ui.findPreference(PreferenceController.PREF_FLATTR_REVOKE).setEnabled(hasFlattrToken);
+//        ui.findPreference(PreferenceController.PREF_AUTO_FLATTR_PREFS).setEnabled(hasFlattrToken);
 
         boolean autoDownload = UserPreferences.isEnableAutodownload();
         ui.findPreference(UserPreferences.PREF_EPISODE_CACHE_SIZE).setEnabled(autoDownload);
@@ -528,13 +524,13 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
         Context context = ui.getActivity().getApplicationContext();
         String val;
         long interval = UserPreferences.getUpdateInterval();
-        if(interval > 0) {
+        if (interval > 0) {
             int hours = (int) TimeUnit.MILLISECONDS.toHours(interval);
             String hoursStr = context.getResources().getQuantityString(R.plurals.time_hours_quantified, hours, hours);
             val = String.format(context.getString(R.string.pref_autoUpdateIntervallOrTime_every), hoursStr);
         } else {
             int[] timeOfDay = UserPreferences.getUpdateTimeOfDay();
-            if(timeOfDay.length == 2) {
+            if (timeOfDay.length == 2) {
                 Calendar cal = new GregorianCalendar();
                 cal.set(Calendar.HOUR_OF_DAY, timeOfDay[0]);
                 cal.set(Calendar.MINUTE, timeOfDay[1]);
@@ -554,7 +550,7 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
         final Resources res = ui.getActivity().getResources();
 
         String s = Integer.toString(downloads)
-                    + res.getString(R.string.parallel_downloads_suffix);
+                + res.getString(R.string.parallel_downloads_suffix);
         ui.findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS).setSummary(s);
     }
 
@@ -660,9 +656,9 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
         final String[] navTitles = context.getResources().getStringArray(R.array.nav_drawer_titles);
         final String[] NAV_DRAWER_TAGS = MainActivity.NAV_DRAWER_TAGS;
         boolean[] checked = new boolean[MainActivity.NAV_DRAWER_TAGS.length];
-        for(int i=0; i < NAV_DRAWER_TAGS.length; i++) {
+        for (int i = 0; i < NAV_DRAWER_TAGS.length; i++) {
             String tag = NAV_DRAWER_TAGS[i];
-            if(!hiddenDrawerItems.contains(tag)) {
+            if (!hiddenDrawerItems.contains(tag)) {
                 checked[i] = true;
             }
         }
@@ -697,8 +693,8 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
 
     private void showChooseDataFolderDialog() {
         Context context = ui.getActivity();
-        File dataFolder =  UserPreferences.getDataFolder(null);
-        if(dataFolder == null) {
+        File dataFolder = UserPreferences.getDataFolder(null);
+        if (dataFolder == null) {
             new MaterialDialog.Builder(ui.getActivity())
                     .title(R.string.error_label)
                     .content(R.string.external_storage_error_msg)
@@ -711,18 +707,18 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
         File[] mediaDirs = ContextCompat.getExternalFilesDirs(context, null);
         List<String> folders = new ArrayList<>(mediaDirs.length);
         List<CharSequence> choices = new ArrayList<>(mediaDirs.length);
-        for(int i=0; i < mediaDirs.length; i++) {
-            if(mediaDirs[i] == null) {
+        for (int i = 0; i < mediaDirs.length; i++) {
+            if (mediaDirs[i] == null) {
                 continue;
             }
             String path = mediaDirs[i].getAbsolutePath();
             folders.add(path);
-            if(dataFolderPath.equals(path)) {
+            if (dataFolderPath.equals(path)) {
                 selectedIndex = i;
             }
             int index = path.indexOf("Android");
             String choice;
-            if(index >= 0) {
+            if (index >= 0) {
                 choice = path.substring(0, index);
             } else {
                 choice = path;
@@ -733,7 +729,7 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
             choices.add(Html.fromHtml("<html><small>" + choice
                     + " [" + freeSpace + "]" + "</small></html>"));
         }
-        if(choices.size() == 0) {
+        if (choices.size() == 0) {
             new MaterialDialog.Builder(ui.getActivity())
                     .title(R.string.error_label)
                     .content(R.string.external_storage_error_msg)
@@ -776,7 +772,7 @@ public class PreferenceController implements SharedPreferences.OnSharedPreferenc
             final String[] entries = getUpdateIntervalEntries(values);
             long currInterval = UserPreferences.getUpdateInterval();
             int checkedItem = -1;
-            if(currInterval > 0) {
+            if (currInterval > 0) {
                 String currIntervalStr = String.valueOf(TimeUnit.MILLISECONDS.toHours(currInterval));
                 checkedItem = ArrayUtils.indexOf(values, currIntervalStr);
             }

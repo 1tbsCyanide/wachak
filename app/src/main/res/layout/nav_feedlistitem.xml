@@ -21,7 +21,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="@dimen/listitem_icon_leftpadding"
-        tools:src="@drawable/ic_stat_antenna_default"
+        tools:src="@drawable/ic_launcher"
         tools:background="@android:color/holo_green_dark"/>
 
     <TextView

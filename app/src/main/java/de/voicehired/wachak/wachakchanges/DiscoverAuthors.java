@@ -83,7 +83,7 @@ public class DiscoverAuthors extends Fragment {
             super.onPreExecute();
             progressDialog = new ProgressDialog(getContext());
             progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Fetching Authors...");
+            progressDialog.setMessage("Loading...");
             progressDialog.show();
         }
 

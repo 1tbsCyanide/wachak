@@ -5,9 +5,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <WebView
-        android:id="@+id/webvAbout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="On-demand radio streamed directly to your smartphone "/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Wachak (vaa-chuck) delivers to you the conversations happening around the world about leadership, life experiences, sports, food, entertainment and talk shows by renowned celebrities, authors, and leaders. Tune-in to Wachak and make best use of your time while cooking, commuting, waiting at the airport, in-flight, or simply giving rest to your eyes. "/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

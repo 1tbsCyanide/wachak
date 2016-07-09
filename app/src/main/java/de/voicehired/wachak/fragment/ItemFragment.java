@@ -254,7 +254,7 @@ public class ItemFragment extends Fragment {
         } else {
             // these are already available via button1 and button2
             FeedItemMenuHandler.onPrepareMenu(popupMenuInterface, item, true, queue, favorites,
-                    R.id.mark_read_item, R.id.visit_website_item);
+                    R.id.mark_read_item);
         }
     }
 
@@ -332,10 +332,10 @@ public class ItemFragment extends Fragment {
                 butAction1Icon = "{fa-check 24sp}";
                 butAction1Text = R.string.mark_read_label;
             }
-            if (item.getLink() != null) {
-                butAction2Icon = "{md-web 24sp}";
-                butAction2Text = R.string.visit_website_label;
-            }
+//            if (item.getLink() != null) {
+//                butAction2Icon = "{md-web 24sp}";
+//                butAction2Text = R.string.visit_website_label;
+//            }
         } else {
             if(media.getDuration() > 0) {
                 txtvDuration.setText(Converter.getDurationStringLong(media.getDuration()));

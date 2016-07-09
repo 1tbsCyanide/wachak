@@ -32,6 +32,7 @@
             tools:background="@android:color/holo_red_dark" />
 
         <Button
+            android:visibility="invisible"
             android:id="@+id/btnMarkAsPlayed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
             android:textSize="10sp" />
 
         <View
+            android:visibility="invisible"
             android:id="@+id/divider2"
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -50,6 +52,7 @@
             tools:background="@android:color/holo_red_dark" />
 
         <Button
+            android:visibility="invisible"
             android:id="@+id/btnMarkAsUnplayed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,6 +63,7 @@
             android:textSize="10sp" />
 
         <View
+            android:visibility="invisible"
             android:id="@+id/divider3"
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -68,6 +72,7 @@
             tools:background="@android:color/holo_red_dark" />
 
         <Button
+            android:visibility="invisible"
             android:id="@+id/btnDownload"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

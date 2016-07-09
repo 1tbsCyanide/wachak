@@ -85,16 +85,16 @@ public class FeedMenuHandler {
                 };
                 conDialog.createNewDialog().show();
                 break;
-            case R.id.visit_website_item:
-                Uri uri = Uri.parse(selectedFeed.getLink());
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                if(IntentUtils.isCallable(context, intent)) {
-                    context.startActivity(intent);
-                } else {
-                    Toast.makeText(context, context.getString(R.string.download_error_malformed_url),
-                            Toast.LENGTH_SHORT);
-                }
-                break;
+//            case R.id.visit_website_item:
+//                Uri uri = Uri.parse(selectedFeed.getLink());
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                if(IntentUtils.isCallable(context, intent)) {
+//                    context.startActivity(intent);
+//                } else {
+//                    Toast.makeText(context, context.getString(R.string.download_error_malformed_url),
+//                            Toast.LENGTH_SHORT);
+//                }
+//                break;
             case R.id.support_item:
                 DBTasks.flattrFeedIfLoggedIn(context, selectedFeed);
                 break;

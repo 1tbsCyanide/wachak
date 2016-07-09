@@ -8,80 +8,89 @@
       "1.2.3-SNAPSHOT" -> 1020300
       "1.2.3-RC4"      -> 1020304
     -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true" />
 
     <uses-feature
         android:name="android.hardware.screen.portrait"
-        android:required="false"/>
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.touchscreen"
-        android:required="false"/>
+        android:required="false" />
 
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name="de.voicehired.wachak.PodcastApp"
+        android:backupAgent="de.voicehired.wachak.core.backup.OpmlBackupAgent"
         android:icon="@drawable/ic_launcher"
         android:label="@string/wachak"
-        android:backupAgent="de.voicehired.wachak.core.backup.OpmlBackupAgent"
-        android:restoreAnyVersion="true"
-        android:logo="@drawable/ic_launcher">
+        android:logo="@drawable/ic_launcher"
+        android:restoreAnyVersion="true">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
         <meta-data
             android:name="com.google.android.backup.api_key"
-            android:value="AEdPqrEAAAAI3a05VToCTlqBymJrbFGaKQMvF-bBAuLsOdavBA"/>
+            android:value="AEdPqrEAAAAI3a05VToCTlqBymJrbFGaKQMvF-bBAuLsOdavBA" />
 
         <activity
-            android:name="de.voicehired.wachak.activity.MainActivity"
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activity.MainActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:label="Wachak">
+            android:label="Wachak"
+            android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".wachakchanges.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".wachakchanges.LogInActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".wachakchanges.LogInActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="de.voicehired.wachak.activity.AudioplayerActivity"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.MainActivity"/>
+                android:value="de.voicehired.wachak.activity.MainActivity" />
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="file"/>
-                <data android:mimeType="audio/*"/>
+                <data android:scheme="file" />
+                <data android:mimeType="audio/*" />
             </intent-filter>
         </activity>
 
         <activity
             android:name="de.voicehired.wachak.activity.DownloadAuthenticationActivity"
-            android:launchMode="singleInstance"/>
+            android:launchMode="singleInstance" />
 
         <activity
             android:name="de.voicehired.wachak.activity.PreferenceActivityGingerbread"
@@ -89,7 +98,7 @@
             android:label="@string/settings_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.MainActivity"/>
+                android:value="de.voicehired.wachak.activity.MainActivity" />
         </activity>
 
         <activity
@@ -98,54 +107,51 @@
             android:label="@string/settings_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.MainActivity"/>
+                android:value="de.voicehired.wachak.activity.MainActivity" />
         </activity>
 
-        <activity android:name="de.voicehired.wachak.activity.FeedInfoActivity">
-        </activity>
+        <activity android:name="de.voicehired.wachak.activity.FeedInfoActivity"/>
 
         <service
             android:name="de.voicehired.wachak.service.PlayerWidgetService"
             android:enabled="true"
-            android:exported="false">
-        </service>
+            android:exported="false"/>
 
         <receiver android:name="de.voicehired.wachak.receiver.PlayerWidget">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <intent-filter>
-                <action android:name="de.danoeh.antennapod.FORCE_WIDGET_UPDATE"/>
+                <action android:name="de.danoeh.antennapod.FORCE_WIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/player_widget_info"/>
+                android:resource="@xml/player_widget_info" />
 
             <intent-filter>
-                <action android:name="de.voicehired.wachak.STOP_WIDGET_UPDATE"/>
+                <action android:name="de.voicehired.wachak.STOP_WIDGET_UPDATE" />
             </intent-filter>
         </receiver>
 
-        <activity android:name="de.voicehired.wachak.activity.StorageErrorActivity">
-        </activity>
+        <activity android:name="de.voicehired.wachak.activity.StorageErrorActivity"/>
         <activity
             android:name="de.voicehired.wachak.activity.FlattrAuthActivity"
             android:label="@string/flattr_auth_label">
             <intent-filter>
-                <action android:name=".activities.FlattrAuthActivity"/>
+                <action android:name=".activities.FlattrAuthActivity" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
                     android:host="de.voicehired.wachak"
-                    android:scheme="flattr4j"/>
+                    android:scheme="flattr4j" />
             </intent-filter>
         </activity>
         <activity
@@ -153,39 +159,37 @@
             android:label="@string/about_pref">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.PreferenceActivity"/>
+                android:value="de.voicehired.wachak.activity.PreferenceActivity" />
         </activity>
         <activity
             android:name="de.voicehired.wachak.activity.OpmlImportFromPathActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/opml_import_label">
-        </activity>
+            android:label="@string/opml_import_label"/>
         <activity
             android:name="de.voicehired.wachak.activity.OpmlImportFromIntentActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/opml_import_label">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
                     android:host="*"
+                    android:mimeType="*/*"
                     android:pathPattern=".*\\.opml"
-                    android:scheme="file"
-                    android:mimeType="*/*"/>
+                    android:scheme="file" />
                 <data
                     android:host="*"
+                    android:mimeType="*/*"
                     android:pathPattern=".*\\.opml"
-                    android:scheme="content"
-                    android:mimeType="*/*"/>
+                    android:scheme="content" />
             </intent-filter>
         </activity>
         <activity
             android:name="de.voicehired.wachak.activity.OpmlFeedChooserActivity"
-            android:label="@string/opml_import_label">
-        </activity>
+            android:label="@string/opml_import_label"/>
 
         <activity
             android:name="de.voicehired.wachak.activity.VideoplayerActivity"
@@ -193,15 +197,15 @@
             android:screenOrientation="landscape">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.MainActivity"/>
+                android:value="de.voicehired.wachak.activity.MainActivity" />
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="file"/>
-                <data android:mimeType="video/*"/>
+                <data android:scheme="file" />
+                <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
         <activity
@@ -209,12 +213,12 @@
             android:label="@string/choose_data_directory">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.PreferenceActivity"/>
+                android:value="de.voicehired.wachak.activity.PreferenceActivity" />
         </activity>
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="de.voicehired.wachak.activity.PreferenceActivity"/>
+            android:value="de.voicehired.wachak.activity.PreferenceActivity" />
 
         <activity
             android:name="de.voicehired.wachak.activity.OnlineFeedViewActivity"
@@ -222,75 +226,75 @@
             android:label="@string/add_feed_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.MainActivity"/>
+                android:value="de.voicehired.wachak.activity.MainActivity" />
 
             <!-- URLs ending with '.xml' or '.rss' -->
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="*"/>
-                <data android:pathPattern=".*\\.xml"/>
-                <data android:pathPattern=".*\\.rss"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.rss" />
             </intent-filter>
 
             <!-- Feedburner URLs -->
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:host="feeds.feedburner.com"/>
-                <data android:host="feedproxy.google.com"/>
-                <data android:host="feeds2.feedburner.com"/>
-                <data android:host="feedsproxy.google.com"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="feeds.feedburner.com" />
+                <data android:host="feedproxy.google.com" />
+                <data android:host="feeds2.feedburner.com" />
+                <data android:host="feedsproxy.google.com" />
             </intent-filter>
 
             <!-- Files with mimeType rss/xml/atom -->
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="http"/>
-                <data android:scheme="https"/>
-                <data android:mimeType="text/xml"/>
-                <data android:mimeType="application/rss+xml"/>
-                <data android:mimeType="application/atom+xml"/>
-                <data android:mimeType="application/xml"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="text/xml" />
+                <data android:mimeType="application/rss+xml" />
+                <data android:mimeType="application/atom+xml" />
+                <data android:mimeType="application/xml" />
             </intent-filter>
 
             <!-- Podcast protocols -->
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="itpc"/>
-                <data android:scheme="pcast"/>
-                <data android:scheme="feed"/>
-                <data android:scheme="antennapod-subscribe"/>
+                <data android:scheme="itpc" />
+                <data android:scheme="pcast" />
+                <data android:scheme="feed" />
+                <data android:scheme="antennapod-subscribe" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
+                <action android:name="android.intent.action.SEND" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/plain" />
             </intent-filter>
 
         </activity>
@@ -301,42 +305,42 @@
             android:label="@string/gpodnet_auth_label"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name=".activity.gpoddernet.GpodnetAuthenticationActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name=".activity.gpoddernet.GpodnetAuthenticationActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.voicehired.wachak.activity.PreferenceActivity"/>
+                android:value="de.voicehired.wachak.activity.PreferenceActivity" />
         </activity>
 
         <receiver android:name="de.voicehired.wachak.receiver.ConnectivityActionReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
         <receiver android:name="de.voicehired.wachak.receiver.PowerConnectionReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
 
         <receiver android:name="de.voicehired.wachak.receiver.SPAReceiver">
             <intent-filter>
-                <action android:name="de.danoeh.antennapdsp.intent.SP_APPS_QUERY_FEEDS_RESPONSE"/>
+                <action android:name="de.danoeh.antennapdsp.intent.SP_APPS_QUERY_FEEDS_RESPONSE" />
             </intent-filter>
         </receiver>
         <receiver android:name="de.voicehired.wachak.core.receiver.AlarmUpdateReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
 
                 <data
                     android:path="de.voicehired.wachak"
-                    android:scheme="package"/>
+                    android:scheme="package" />
             </intent-filter>
         </receiver>
         <receiver android:name="de.voicehired.wachak.core.service.playback.MediaButtonIntentReceiver">
